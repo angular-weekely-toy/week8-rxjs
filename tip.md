@@ -88,7 +88,8 @@ tip
   - https://www.tektutorialshub.com/angular/renderer2-angular/
 
 - routing
-
+  - https://angular.kr/guide/lazy-loading-ngmodules 
+  - 라우팅 단위로 코드 나누기: https://web.dev/route-level-code-splitting-in-angular/
 
 - cli
   - https://angular.kr/guide/cli
