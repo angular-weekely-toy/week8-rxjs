@@ -16,6 +16,9 @@
 # week6 directive Public
 - directive 이용한 자유 주제
 
+# week6 routing
+- routing 이용한 자유 주제
+
 
 # api
  - weather: https://openweathermap.org/

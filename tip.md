@@ -87,6 +87,9 @@ tip
 - Renderer2
   - https://www.tektutorialshub.com/angular/renderer2-angular/
 
+- routing
+
+
 - cli
   - https://angular.kr/guide/cli
   - https://angular.kr/guide/cli-configuration
