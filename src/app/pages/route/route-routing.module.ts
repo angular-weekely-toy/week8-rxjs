@@ -10,7 +10,7 @@ import {RouteSub2Component} from './pages/route-sub2.component';
 const routes: Routes = [
   {path: '', component: RouteMainComponent, canActivate: [UserService]},
   {path: 'good',   redirectTo: '55', pathMatch: 'full' },
-  {path: ':id', component: RouteSubComponent,
+  {path: ':id', component: RouteSubComponent, data: {title: 'sub page'},
     children: [
       {
         path: 'child-a', // 자식 라우팅 규칙과 연결되는 주소

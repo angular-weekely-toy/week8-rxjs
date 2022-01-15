@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-route-main',
   template: `
-    <h2>sub {{id}}</h2>
+    <h2>{{title}} {{id}}</h2>
 
     <nav>
       <ul>
@@ -18,9 +18,18 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class RouteSubComponent implements OnInit {
   id = '';
-  constructor(private route: ActivatedRoute) {
+  title = 'default title';
+  constructor(private router: Router, private route: ActivatedRoute) {
   }
   ngOnInit(): void {
+    this.router.events.subscribe(it => {
+      console.log('----router event-->', it);
+    });
+    // this.route.snapshot.paramMap
+    this.route.data.subscribe(it => {
+      console.log('title-->---', it.title);
+      this.title = it.title;
+    });
     this.route.paramMap.subscribe(params => {
       console.log('---', params.get('id'));
     });
