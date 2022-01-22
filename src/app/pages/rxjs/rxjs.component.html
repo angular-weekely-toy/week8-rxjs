@@ -1,0 +1,85 @@
+<div style="width: 90vw">
+  <h1>rxjs</h1>
+  <ul>
+    <li><a href="https://reactivex.io/" target="_blank">https://reactivex.io/</a></li>
+    <li><a href="https://rxjs.dev/" target="_blank">https://rxjs.dev/</a></li>
+  </ul>
+  <dl>
+    <dt>Observer</dt>
+    <dd>옵저버는 Observable을 구독한다.</dd>
+
+    <dt>Observable</dt>
+    <dd>Obseravable이 배출하는 하나 또는 연속된 항목에 옵저버는 반응한다. 이러한 패턴은 동시성 연산을 가능하게 한다.</dd>
+
+    <dt>마블 다이어그램</dt>
+    <dd><img src="https://reactivex.io/assets/operators/legend.png" style="width:100%"></dd>
+
+    <dt>Observable operator(연산자)</dt>
+    <dd><a href="https://reactivex.io/documentation/operators.html" target="_blank">https://reactivex.io/documentation/operators.html</a></dd>
+  </dl>
+
+  <h1><a href="https://rxjs.dev/guide/observable" src1="https://iamsjy17.github.io/rxjs/2020/09/30/inside-rxjs-creation-fn-create-copy.html" target="_blank">Observer 생성</a></h1>
+  <dl>
+    <dt>Observer</dt>
+    <dd>Subscribe 메서드를 통해 옵저버와 Observable을 연결한다. 여러분의 옵저버는 아래의 메서드를 구현하게 될 것이다.</dd>
+    <dt>- onNext</dt>
+    <dd>Observable은 새로운 항목들을 배출할 때마다 이 메서드를 호출한다. 이 메서드는 Observable이 배출하는 항목을 파라미터로 전달 받는다.</dd>
+    <dt>- onError</dt>
+    <dd>Observable은 기대하는 데이터가 생성되지 않았거나 다른 이유로 오류가 발생할 경우 오류를 알리기 위해 이 메서드를 호출한다. 이 메서드가 호출되면 onNext나 onCompleted는 더 이상 호출되지 않는다. onError 메서드는 오류 정보를 저장하고 있는 객체를 파라미터로 전달 받는다.</dd>
+    <dt>- onCompleted</dt>
+    <dd>오류가 발생하지 않았다면 Observable은 마지막 onNext를 호출한 후 이 메서드를 호출한다.</dd>
+    <dt>구독 해지</dt>
+    <dd>ReactiveX 구현체 중에는 Subscriber라는 특별한 옵저버 인터페이스가 있는데 이 인터페이스는 unsubscribe라는 메서드를 제공한다. 현재 구독 중인 Observable 중, 옵저버가 더 이상 구독을 원하지 않는 경우에는 이 메서드를 호출해서 구독을 해지할 수 있다. 만약 더 이상 관심있는 다른 옵저버가 존재하지 않는다면 Observable들은 새로운 항목들을 배출하지 않는다.
+
+      unsubscribe는 연산자 체인을 통해 옵저버가 구독하고 있었던 Observable들이 더 이상 항목들을 배출하지 못하도록 체인 안에 연결된 링크들을 끊어 버린다.</dd>
+
+    <dt><button class="btn btn-primary" (click)="createNormalObservable()">기본생성</button></dt>
+    <dd>
+      <div *ngFor="let it of this.normalObservable">{{it}}</div>
+    </dd>
+  </dl>
+  <h1><a href="https://reactivex.io/documentation/ko/observable.html" target="_blank">Observable</a></h1>
+  <dl>
+    <dt>“뜨거운(Hot)”</dt>
+    <dd>Observable은 생성되자 마자 항목들을 배출하기도 하기 때문에, 이 Observable을 구독하는 옵저버들은 어떤 경우에는 항목들이 배출되는 중간부터 Observable을 구독할 수 있다.</dd>
+    <dt>“차가운(Cold)”</dt>
+    <dd>Observable은 옵저버가 구독할 때 까지 항목을 배출하지 않기 때문에 이 Observable을 구독하는 옵저버는 Observable이 배출하는 항목 전체를 구독할 수 있도록 보장 받는다.</dd>
+  </dl>
+  <h1><a href="https://reactivex.io/documentation/ko/operators.html" target="_blank">Operator (연산자)</a></h1>
+  <dl>
+    <dt>연산자를 활용한 구성</dt>
+    <dd>Observable과 옵저버는 그저 ReactiveX의 시작점일 뿐이다. 우리가 알고 있는 표준 옵저버 패턴을 조금 확장한 것이며, 연속된 이벤트를 처리하는데 있어서는 싱글 콜백보다는 훨씬 더 효과적인 방법을 제공한다.</dd>
+    <dt><button class="btn btn-primary" (click)="createFilterOperator()">- filter</button></dt>
+    <dd>
+      <div *ngFor="let it of this.filterOperator">{{it}}</div>
+    </dd>
+  </dl>
+  <h1><a href="https://reactivex.io/documentation/ko/single.html" target="_blank">Single</a></h1>
+  <dt>Single</dt>
+  <dl>RxJava(그리고 RxGroovy나 RxScala 같은 reactivex의 구현체들)는 Observable과 유사한 “Single”을 제공한다.
+
+    Single은 Obvservable의 한 형태이지만, Observable처럼 존재하지 않는 곳에서부터 무한대까지의 임이의 연속된 값들을 배출하는 것과는 달리, 항상 한 가지 값 또는 오류 알림 둘 중 하나만 배출한다.</dl>
+  <h1><a href="https://reactivex.io/documentation/ko/subject.html" target="_blank">Subject</a></h1>
+  <dt>Subject</dt>
+  <dl>주제(subject)는 옵저버나 Observable처럼 행동하는 ReactiveX의 일부 구현체에서 사용 가능한 일종의 교각 혹은 프록시라고 볼 수 있는데, 그 이유는 주제는 옵저버이기 때문에 하나 이상의 Observable을 구독할 수 있으며 동시에 Observable이기도 하기 때문에 항목들을 하나 하나 거치면서 재배출하고 관찰하며 새로운 항목들을 배출할 수도 있다.
+
+    하나의 주제는 하나의 Observable을 구독하면서, (Observable이 "차가운" Observable인 경우 즉, 옵저버가 구독을 시작하기 전까지 항목들의 배출을 지연시키는 Observable일 경우)Observable이 항목들을 배출시키도록 동작시킨다. 그 결과로 인해 원래는 "차가운" Observable이었던 주제를 "뜨거운" Observable로 만들기도 한다.</dl>
+  <dt>- AysncSubject</dt>
+  <dl>AsyncSubject는 소스 Observable로부터 배출된 마지막 값(만)을 배출하고 소스 Observalbe의 동작이 완료된 후에야 동작한다. (만약, 소스 Observable이 아무 값도 배출하지 않으면 AsyncSubject 역시 아무 값도 배출하지 않는다.)</dl>
+  <dl><img src="https://reactivex.io/documentation/operators/images/S.AsyncSubject.png" style="width: 50%"><img src="https://reactivex.io/documentation/operators/images/S.AsyncSubject.e.png" style="width: 50%"></dl>
+
+  <dt>- BehaviorSubject</dt>
+  <dl>옵저버가 BehaviorSubject를 구독하기 시작하면, 옵저버는 소스 Observable이 가장 최근에 발행한 항목(또는 아직 아무 값도 발행되지 않았다면 맨 처음 값이나 기본 값)의 발행을 시작하며 그 이후 소스 Observable(들)에 의해 발행된 항목들을 계속 발행한다.</dl>
+  <dl><img src="https://reactivex.io/documentation/operators/images/S.BehaviorSubject.e.png" style="width: 50%"></dl>
+  <dt>- PublishSubject</dt>
+  <dl>PublishSubject는 구독 이후에 소스 Observable(들)이 배출한 항목들만 옵저버에게 배출한다.</dl>
+  <dl><img src="https://reactivex.io/documentation/operators/images/S.PublishSubject.png" style="width: 50%"><img src="https://reactivex.io/documentation/operators/images/S.PublishSubject.e.png" style="width: 50%"></dl>
+  <dt>- ReplaySubject</dt>
+  <dl>ReplaySubject는 옵저버가 구독을 시작한 시점과 관계 없이 소스 Observable(들)이 배출한 모든 항목들을 모든 옵저버에게 배출한다.</dl>
+  <dl><img src="https://reactivex.io/documentation/operators/images/S.ReplaySubject.png" style="width: 50%"></dl>
+
+
+  <h1><a href="https://reactivex.io/documentation/ko/scheduler.html" target="_blank">스케줄러</a></h1>
+  <dt>스케줄러</dt>
+  <dl>Observable 연산자 체인에 멀티스레딩을 적용하고 싶다면, 특정 스케줄러를 사용해서 연산자(또는 특정 Observable)를 실행하면 된다.</dl>
+</div>

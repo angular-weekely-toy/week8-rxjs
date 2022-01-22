@@ -8,6 +8,7 @@ import {CatSearchPageComponent} from './pages/cat-search/cat-search.page.compone
 import {EmojiComponent} from './pages/emoji/emoji.component';
 import {DirectivesComponent} from './pages/directives/directives.component';
 import {RouteModule} from './pages/route/route.module';
+import { RxjsComponent } from 'src/app/pages/rxjs/rxjs.component';
 
 const routes: Routes = [
   {path: '', component: HomePageComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'emoji', component: EmojiComponent},
   {path: 'directives', component: DirectivesComponent},
   {path: 'route', loadChildren: () => import('./pages/route/route.module').then(m => m.RouteModule)},
+  {path: 'rxjs', component: RxjsComponent},
 ];
 
 @NgModule({

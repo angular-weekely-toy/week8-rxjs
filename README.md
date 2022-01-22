@@ -16,9 +16,13 @@
 # week6 directive Public
 - directive 이용한 자유 주제
 
-# week6 routing
+# week7 routing
 - routing 이용한 자유 주제
-
+- 
+# week8 rxjs
+- rxjs 훑고가기
+- https://rxjs.dev/
+- http://reactivex.io/
 
 # api
  - weather: https://openweathermap.org/
