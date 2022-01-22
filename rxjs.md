@@ -1,4 +1,4 @@
-- Filter 함수
+# Filter 함수
 
 ## filter → 걸러주는 역할 (필터)
 
@@ -9,7 +9,6 @@ const obs = interval(1000);
 obs.subscribe((x) => console.log(x));
 ```
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/639ed38b-68db-4c66-aa4d-f3676974f233/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/639ed38b-68db-4c66-aa4d-f3676974f233/Untitled.png)
 
 ```jsx
 import { interval } from 'rxjs';
@@ -24,7 +23,6 @@ const obs = interval(1000)
   .subscribe((x) => console.log(x));
 ```
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cc568ea9-5a31-4911-96a8-ed5d35609bba/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cc568ea9-5a31-4911-96a8-ed5d35609bba/Untitled.png)
 
 ```jsx
 import { from, of } from 'rxjs'
@@ -41,7 +39,6 @@ from(products).pipe(
 ).subscribe(console.log)
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4cd738db-2317-48a7-91c8-1a0113bd43e5/Untitled.png)
 
 ## skip → 갯수를 통해 스킵
 
@@ -61,7 +58,6 @@ from(products).pipe(
 ).subscribe(console.log)
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4ce19653-46d1-4679-9038-b05e10eef04a/Untitled.png)
 
 ## skipWhile → condition fn이 처음으로 false일 때까지 skip 그 이후는 무조건 생성
 
@@ -82,7 +78,6 @@ from(products).pipe(
 ).subscribe(console.log)
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ff1fe5e3-97d6-4bc1-bb41-72f7c75694c5/Untitled.png)
 
 ## take → 설정한 만큼 생성 (skip 반대)
 
@@ -102,7 +97,6 @@ from(products).pipe(
 ).subscribe(console.log)
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3c57ffc8-0e5b-4219-99b3-6ef60572f6c0/Untitled.png)
 
 ## takeWhile → condition fn이 처음으로 false일 때까지 생성 그 이후는 값을 안가져옴
 
@@ -122,7 +116,6 @@ from(products).pipe(
 ).subscribe(console.log)
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e69ea0fa-addc-413b-8c89-582a745f51bb/Untitled.png)
 
 ## takeLast → 뒤에서 부터 값 가져오기
 
@@ -142,7 +135,6 @@ from(products).pipe(
 ).subscribe(console.log)
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5be6f5bc-d860-4eac-8827-c494512d4069/Untitled.png)
 
 ## distinct → 중복제거 (ex: 클릭 똑같은거 할경우 막을수있음)
 
@@ -152,7 +144,6 @@ from([1, 2, 3, 4, 4, 5]).pipe(
 ).subscribe(console.log )
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4fb0d28e-ec06-4190-a26e-d9061d1c2dcd/Untitled.png)
 
 ```jsx
 //객체일 경우에는 다른 값이라서 키를 
@@ -172,7 +163,6 @@ from(products).pipe(
 ).subscribe(console.log)
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/caf9bd72-c005-4d7e-8693-50e2cc94028f/Untitled.png)
 
 ```jsx
 import { from, of } from 'rxjs'
@@ -191,7 +181,6 @@ from(products).pipe(
 ).subscribe(console.log)
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2e79c75f-ff71-4d53-a2c9-9f851ae5fd0f/Untitled.png)
 
 ## reduce → 다수의 값을 하나의 값으로 변경 (총 더하는 값)
 
@@ -234,7 +223,6 @@ from(products)
   ).subscribe(console.log)
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ee0a0dfa-e3d3-4c01-acad-cc5206e773b6/Untitled.png)
 
 ## first → 첫번째 값 (하나의 값만)
 
@@ -249,7 +237,6 @@ obs.pipe(first())
 });
 ```
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3b5e1821-3d99-4eb6-8246-6f0c45ccb277/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3b5e1821-3d99-4eb6-8246-6f0c45ccb277/Untitled.png)
 
 ```jsx
 import { from, of } from 'rxjs'
@@ -268,7 +255,6 @@ from (products)
   ).subscribe(console.log)
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/92be36e6-2d11-4d1f-a6c5-72e16c60ad26/Untitled.png)
 
 ### 함수 true가 되는 첫번째 값을 받을 수 있다.(옵션:predicate전달)
 
@@ -289,7 +275,6 @@ from (products)
   ).subscribe(console.log)
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/07b3529f-1a18-4f42-9bdf-40b5486fbbde/Untitled.png)
 
 ## find: 처음으로 true가 된 값 (predicate 필수)
 
@@ -311,7 +296,6 @@ from(products)
   ).subscribe(console.log)
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fc97ffe2-c783-4628-b33c-c8a1abb6e33a/Untitled.png)
 
 ```jsx
 import { from, of } from 'rxjs'
@@ -331,7 +315,6 @@ from(products)
   ).subscribe(console.log)
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6312991a-306f-425c-8bdf-b3a0fcb95a20/Untitled.png)
 
 ### first vs find 차이점
 
@@ -372,8 +355,6 @@ from(products)
   ).subscribe(console.log)
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/23fe5639-1df1-410a-9241-48ca764cf2f1/Untitled.png)
-
 ## count → 조건의 함수가 참일때 갯수 또는 총 갯수 (옵션: predicate)
 
 ```jsx
@@ -399,7 +380,6 @@ from(products)
     ).subscribe(console.log)
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/38bc25d1-2b3b-412c-b9f8-ab899c9e3397/Untitled.png)
 
 하나의 값을 전달하는 것은 complete될때 값이 나옴 (예: reduce, single, count)
 
@@ -413,7 +393,6 @@ interval(1000)
   ).subscribe(console.log)
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4afaea0f-6aa5-4f3f-804d-49f9eeb25d69/Untitled.png)
 
 무한으로 생성하는 observer일 경우 complete 만들어서 실행하는 예제
 
@@ -426,7 +405,6 @@ interval(1000)
   ).subscribe(console.log)
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f0b8dc24-b298-4826-a01b-b4eec6b64679/Untitled.png)
 
 ## debounceTime → 시간안에서 마지막 값을 기억해서 발생 (자동완성)
 
@@ -441,7 +419,6 @@ fromEvent(input, 'input')
 });
 ```
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a4237141-b71f-49ee-be22-5dc0a9a70d87/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a4237141-b71f-49ee-be22-5dc0a9a70d87/Untitled.png)
 
 ## distinctUntilChanged
 
